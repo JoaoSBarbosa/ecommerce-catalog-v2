@@ -1,5 +1,6 @@
 package com.joaobarbosa.ecommercecatalogv2.services;
 
+import com.joaobarbosa.ecommercecatalogv2.dto.CategoryDTO;
 import com.joaobarbosa.ecommercecatalogv2.entities.Category;
 import com.joaobarbosa.ecommercecatalogv2.repositories.CategoryRepository;
 import org.springframework.data.domain.Page;
@@ -18,15 +19,16 @@ public class CategoryService {
 
 
     @Transactional(readOnly = true)
-    public Category getById(Long id) {
+    public CategoryDTO getById(Long id) {
         if (id != null) {
-            return categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Não localizamos registros de categorias com o id informado"));
+           return new CategoryDTO(categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Não localizamos registros de categorias com o id informado")));
         }
         return null;
     }
 
     @Transactional(readOnly = true)
-    public Page<Category> getAll(Pageable pageable) {
-        return categoryRepository.findAll(pageable);
+    public Page<CategoryDTO> getAll(Pageable pageable) {
+        Page<Category> categories = categoryRepository.findAll(pageable);
+        return categories.map(CategoryDTO::new);
     }
 }

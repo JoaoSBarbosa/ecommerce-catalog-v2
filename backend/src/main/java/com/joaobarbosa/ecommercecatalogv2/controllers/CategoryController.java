@@ -1,5 +1,6 @@
 package com.joaobarbosa.ecommercecatalogv2.controllers;
 
+import com.joaobarbosa.ecommercecatalogv2.dto.CategoryDTO;
 import com.joaobarbosa.ecommercecatalogv2.entities.Category;
 import com.joaobarbosa.ecommercecatalogv2.services.CategoryService;
 import org.springframework.data.domain.Page;
@@ -24,15 +25,15 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategory(@PathVariable Long id) {
-        Category category = categoryService.getById(id);
+    public ResponseEntity<CategoryDTO> getCategory(@PathVariable Long id) {
+        CategoryDTO category = categoryService.getById(id);
 
         return ResponseEntity.ok().body(category);
     }
 
     @GetMapping
-    public ResponseEntity<Page<Category>> findAllCategories(Pageable pageable) {
-        Page<Category> categories = categoryService.getAll(pageable);
+    public ResponseEntity<Page<CategoryDTO>> findAllCategories(Pageable pageable) {
+        Page<CategoryDTO> categories = categoryService.getAll(pageable);
         return ResponseEntity.ok().body(categories);
     }
 
