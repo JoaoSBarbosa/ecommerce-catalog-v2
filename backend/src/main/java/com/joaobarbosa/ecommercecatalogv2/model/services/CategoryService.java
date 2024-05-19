@@ -1,7 +1,7 @@
-package com.joaobarbosa.ecommercecatalogv2.services;
+package com.joaobarbosa.ecommercecatalogv2.model.services;
 
-import com.joaobarbosa.ecommercecatalogv2.dto.CategoryDTO;
-import com.joaobarbosa.ecommercecatalogv2.entities.Category;
+import com.joaobarbosa.ecommercecatalogv2.model.dto.CategoryDTO;
+import com.joaobarbosa.ecommercecatalogv2.model.entities.Category;
 import com.joaobarbosa.ecommercecatalogv2.repositories.CategoryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

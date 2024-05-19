@@ -1,8 +1,8 @@
 package com.joaobarbosa.ecommercecatalogv2.controllers;
 
-import com.joaobarbosa.ecommercecatalogv2.dto.CategoryDTO;
-import com.joaobarbosa.ecommercecatalogv2.entities.Category;
-import com.joaobarbosa.ecommercecatalogv2.services.CategoryService;
+import com.joaobarbosa.ecommercecatalogv2.model.dto.CategoryDTO;
+import com.joaobarbosa.ecommercecatalogv2.model.entities.Category;
+import com.joaobarbosa.ecommercecatalogv2.model.services.CategoryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

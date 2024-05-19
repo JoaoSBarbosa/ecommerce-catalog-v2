@@ -1,4 +1,4 @@
-package com.joaobarbosa.ecommercecatalogv2.entities;
+package com.joaobarbosa.ecommercecatalogv2.model.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

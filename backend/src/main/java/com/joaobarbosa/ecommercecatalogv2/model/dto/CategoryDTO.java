@@ -1,5 +1,5 @@
-package com.joaobarbosa.ecommercecatalogv2.dto;
-import com.joaobarbosa.ecommercecatalogv2.entities.Category;
+package com.joaobarbosa.ecommercecatalogv2.model.dto;
+import com.joaobarbosa.ecommercecatalogv2.model.entities.Category;
 
 import java.io.Serial;
 import java.io.Serializable;
