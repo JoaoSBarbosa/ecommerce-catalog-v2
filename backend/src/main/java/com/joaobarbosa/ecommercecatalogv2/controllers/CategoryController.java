@@ -6,11 +6,10 @@ import com.joaobarbosa.ecommercecatalogv2.model.services.CategoryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class CategoryController {
 
     final CategoryService categoryService;
 
-    public CategoryController(CategoryService categoryService){
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -37,14 +36,13 @@ public class CategoryController {
         return ResponseEntity.ok().body(categories);
     }
 
-    @GetMapping("/teste")
-    public ResponseEntity<List<Category>> findAll() {
-        List<Category> categories = new ArrayList<>();
-        categories.add(new Category(1L, "Livros"));
-        categories.add(new Category(2L, "Professors"));
-        categories.add(new Category(3L, "Computadores"));
-        categories.add(new Category(4L, "Computadores"));
-        categories.add(new Category(5L, "Computadores"));
-        return ResponseEntity.ok().body(categories);
+
+    @PostMapping
+    public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO source) {
+        source = categoryService.insert(source);
+
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(source.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(source);
     }
 }

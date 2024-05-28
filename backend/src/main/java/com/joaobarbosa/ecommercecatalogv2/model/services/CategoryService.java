@@ -36,4 +36,13 @@ public class CategoryService {
         Page<Category> categories = categoryRepository.findAll(pageable);
         return categories.map(CategoryDTO::new);
     }
+
+    @Transactional
+    public CategoryDTO insert(CategoryDTO source) {
+        Category category = new Category();
+
+        category.setName(source.getName());
+        category = categoryRepository.save(category);
+        return new CategoryDTO(category);
+    }
 }
