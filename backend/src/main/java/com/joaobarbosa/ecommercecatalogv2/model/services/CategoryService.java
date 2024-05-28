@@ -45,4 +45,16 @@ public class CategoryService {
         category = categoryRepository.save(category);
         return new CategoryDTO(category);
     }
+
+    @Transactional
+    public CategoryDTO update(Long id, CategoryDTO dto) {
+        try {
+            Category category = categoryRepository.getOne(id);
+            if (dto.getName() != null) category.setName(dto.getName());
+            category = categoryRepository.save(category);
+            return new CategoryDTO(category);
+        } catch (EntityNotFoundException e) {
+            throw new ControllerEntityNotFound("Não foi localizado registros de categoriaS com o id informado: "+id);
+        }
+    }
 }
